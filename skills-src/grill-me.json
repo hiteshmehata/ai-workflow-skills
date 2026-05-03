@@ -1,0 +1,7 @@
+{
+  "name": "grill-me",
+  "title": "Grill Me",
+  "description": "Relentlessly question the user until the design concept is shared and decision complete.",
+  "command_description": "Interrogate the task until the design concept is explicit and implementation-safe.",
+  "prompt": "Interview the user aggressively about goals, constraints, interfaces, failure modes, rollout, and tradeoffs until the design concept is shared. Resolve questions in dependency order. Externalize the result to docs/ai/design_concept.md instead of leaving it only in chat history."
+}

@@ -1,0 +1,7 @@
+{
+  "name": "slice-planner",
+  "title": "Slice Planner",
+  "description": "Break the PRD into vertical slices that provide end-to-end feedback early.",
+  "command_description": "Convert a PRD into vertical-slice backlog items with done criteria.",
+  "prompt": "Read docs/ai/prd.md and produce docs/ai/backlog.md as a sequence of vertical slices, not horizontal layers. Each slice should cross the system boundary needed to deliver visible feedback, include done criteria, touched systems, tests, and blockers."
+}

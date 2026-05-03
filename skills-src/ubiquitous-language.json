@@ -1,0 +1,7 @@
+{
+  "name": "ubiquitous-language",
+  "title": "Ubiquitous Language",
+  "description": "Extract repo-native terminology so future plans and implementations stay terse and aligned.",
+  "command_description": "Scan the repo and produce a canonical shared vocabulary.",
+  "prompt": "Scan code, docs, tests, schemas, and configs to derive docs/ai/ubiquitous_language.md. Capture canonical terms, definitions grounded in the repo, synonyms, overloaded words, and vague phrases to avoid. Prefer repo truth over generic software jargon."
+}

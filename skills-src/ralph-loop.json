@@ -1,0 +1,7 @@
+{
+  "name": "ralph-loop",
+  "title": "Ralph Loop",
+  "description": "Implement one slice at a time with TDD, focused checks, and explicit pause points.",
+  "command_description": "Run the AFK implementation loop for one slice using failing-test-first discipline.",
+  "prompt": "Pull one slice from docs/ai/backlog.md, explore the codebase, write or identify the failing test first, implement the minimum change to pass, rerun focused checks, and update docs/ai/handoff.md with current state, validation, and next step. Do not broaden scope beyond the current slice."
+}

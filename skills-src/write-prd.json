@@ -1,0 +1,7 @@
+{
+  "name": "write-prd",
+  "title": "Write PRD",
+  "description": "Compress the agreed design concept into a destination document the agent can execute against.",
+  "command_description": "Turn the agreed design into a terse implementation-facing PRD.",
+  "prompt": "Transform the current design concept into docs/ai/prd.md. Capture the problem, target user or operator, user stories, non-goals, explicit decisions, acceptance criteria, and testing expectations. Keep it implementation-facing rather than promotional."
+}
