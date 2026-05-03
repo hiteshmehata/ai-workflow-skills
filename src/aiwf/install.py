@@ -25,11 +25,21 @@ def _copy_file(source: Path, destination: Path) -> None:
     shutil.copy2(source, destination)
 
 
-def install(root: Path, target: str, home: Path, dry_run: bool = False) -> list[InstallAction]:
+def install(
+    root: Path,
+    target: str,
+    home: Path,
+    dry_run: bool = False,
+    repo: Path | None = None,
+) -> list[InstallAction]:
     layout = project_layout(root)
     paths = default_install_targets(home)
     if target == "codex":
         return _install_skills(layout.codex_skills, paths.codex_skills, dry_run)
+    if target == "copilot":
+        if repo is None:
+            raise ValueError("copilot install requires a repository path")
+        return _install_prompt_files(layout.copilot_prompts, repo / ".github" / "prompts", dry_run)
     if target == "opencode":
         actions = _install_skills(layout.opencode_skills, paths.opencode_skills, dry_run)
         actions.extend(_install_commands(layout.opencode_commands, paths.opencode_commands, dry_run))
@@ -39,7 +49,9 @@ def install(root: Path, target: str, home: Path, dry_run: bool = False) -> list[
     if target == "all":
         actions: list[InstallAction] = []
         for item in ("codex", "opencode", "claude"):
-            actions.extend(install(root, item, home=home, dry_run=dry_run))
+            actions.extend(install(root, item, home=home, dry_run=dry_run, repo=repo))
+        if repo is not None:
+            actions.extend(install(root, "copilot", home=home, dry_run=dry_run, repo=repo))
         return actions
     raise ValueError(f"unknown install target: {target}")
 
@@ -59,6 +71,17 @@ def _install_commands(source_root: Path, destination_root: Path, dry_run: bool) 
     actions: list[InstallAction] = []
     destination_root.mkdir(parents=True, exist_ok=True)
     for source in sorted(source_root.glob("*.md")):
+        destination = destination_root / source.name
+        actions.append(InstallAction(source=source, destination=destination))
+        if not dry_run:
+            _copy_file(source, destination)
+    return actions
+
+
+def _install_prompt_files(source_root: Path, destination_root: Path, dry_run: bool) -> list[InstallAction]:
+    actions: list[InstallAction] = []
+    destination_root.mkdir(parents=True, exist_ok=True)
+    for source in sorted(source_root.glob("*.prompt.md")):
         destination = destination_root / source.name
         actions.append(InstallAction(source=source, destination=destination))
         if not dry_run:

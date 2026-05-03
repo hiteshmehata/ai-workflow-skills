@@ -62,6 +62,22 @@ Standard project artifacts:
 """
 
 
+def _copilot_prompt_markdown(workflow: Workflow) -> str:
+    outputs = "\n".join(f"- `{output}`" for output in workflow.outputs)
+    return f"""---
+agent: 'agent'
+description: '{workflow.command_description}'
+---
+
+You are running the `{workflow.name}` workflow in GitHub Copilot.
+
+{workflow.prompt}
+
+Standard project artifacts:
+{outputs}
+"""
+
+
 def _launcher_script(catalog: WorkflowCatalog) -> str:
     names = " ".join(sorted(workflow.name for workflow in catalog.workflows))
     return f"""#!/usr/bin/env sh
@@ -93,6 +109,7 @@ def build(root: Path) -> ProjectLayout:
     for directory in (
         layout.agent_skills,
         layout.codex_skills,
+        layout.copilot_prompts,
         layout.opencode_skills,
         layout.opencode_commands,
         layout.claude_commands,
@@ -104,6 +121,9 @@ def build(root: Path) -> ProjectLayout:
     for workflow in catalog.workflows:
         _write_skill_bundle(layout.agent_skills / workflow.name, workflow)
         _write_skill_bundle(layout.codex_skills / workflow.name, workflow)
+        (layout.copilot_prompts / f"{workflow.name}.prompt.md").write_text(
+            _copilot_prompt_markdown(workflow)
+        )
         _write_skill_bundle(layout.opencode_skills / workflow.name, workflow)
         (layout.opencode_commands / f"{workflow.name}.md").write_text(
             _command_markdown(workflow, "OpenCode")

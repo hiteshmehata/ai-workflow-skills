@@ -2,20 +2,30 @@
 
 Cross-agent workflow skills for Codex, OpenCode, and Claude Code.
 
+Some skills in this repo are general-purpose thinking and planning tools, and some are specifically part of the AI coding workflow. In particular, `grill-me` and `ubiquitous-language` are general skills that the coding workflow reuses.
+
 ## What ships
 
 - Canonical workflow definitions under `skills-src/`
 - Generated Agent Skills for Codex and OpenCode under `dist/`
+- Generated GitHub Copilot prompt files under `dist/`
 - Generated slash commands for OpenCode and Claude Code under `dist/`
 - `aiwf` CLI for build, validation, install, and environment checks
 
 ## Workflows
 
 - `grill-me`
+- `research`
 - `write-prd`
 - `slice-planner`
 - `ralph-loop`
 - `ubiquitous-language`
+- `improve-architecture`
+- `review-security`
+- `review-reliability`
+- `review-ux-consistency`
+- `review-architecture`
+- `review-test-quality`
 - `harness-engineering`
 
 ## Quick start
@@ -32,6 +42,7 @@ aiwf install all --dry-run
 ## Install targets
 
 - Codex: Agent Skills under `~/.codex/skills/`
+- GitHub Copilot: prompt files under `.github/prompts/` in a target repository
 - OpenCode commands: `~/.config/opencode/commands/`
 - OpenCode skills: `~/.config/opencode/skills/`
 - Claude Code commands: `~/.claude/commands/`

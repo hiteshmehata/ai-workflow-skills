@@ -1,0 +1,7 @@
+{
+  "name": "review-security",
+  "title": "Review Security",
+  "description": "Review a completed slice for security flaws before it reaches human review.",
+  "command_description": "Inspect the slice for security regressions and missing safeguards.",
+  "prompt": "Run this reviewer after an implementation slice is complete. Inspect the changed behavior, code paths, and interfaces for security flaws, unsafe defaults, missing validation, privilege issues, secret handling problems, and trust-boundary mistakes. Report concrete findings, residual risk, and any required follow-up before the slice is considered ready."
+}

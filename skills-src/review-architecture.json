@@ -1,0 +1,7 @@
+{
+  "name": "review-architecture",
+  "title": "Review Architecture",
+  "description": "Review a completed slice for boundary discipline, coupling, and long-term maintainability.",
+  "command_description": "Inspect the slice for architectural regressions and weak seams.",
+  "prompt": "Run this reviewer after an implementation slice is complete. Inspect the changes for boundary violations, shallow abstractions, coupling growth, leaky interfaces, misplaced responsibilities, and divergence from the planned module seams. Report concrete findings, residual risk, and any required follow-up before the slice is considered ready."
+}

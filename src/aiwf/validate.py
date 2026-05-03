@@ -25,7 +25,13 @@ def validate(root: Path) -> list[str]:
             issues.append(f"workflow {workflow.name} changed the shared artifact contract")
 
     layout = project_layout(root)
-    expected = [layout.codex_skills, layout.opencode_commands, layout.opencode_skills, layout.claude_commands]
+    expected = [
+        layout.codex_skills,
+        layout.copilot_prompts,
+        layout.opencode_commands,
+        layout.opencode_skills,
+        layout.claude_commands,
+    ]
     missing = [str(path) for path in expected if not path.exists()]
     if missing:
         issues.append("missing build outputs: " + ", ".join(missing))

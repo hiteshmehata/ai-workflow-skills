@@ -17,20 +17,28 @@ def _root() -> Path:
 
 
 def _parser() -> argparse.ArgumentParser:
+    def add_home_flag(target: argparse.ArgumentParser) -> None:
+        target.add_argument("--home", type=Path, default=None)
+
+    def add_repo_flag(target: argparse.ArgumentParser) -> None:
+        target.add_argument("--repo", type=Path, default=None)
+
     parser = argparse.ArgumentParser(prog="aiwf")
-    parser.add_argument("--home", type=Path, default=None)
+    add_home_flag(parser)
     subparsers = parser.add_subparsers(dest="command", required=True)
 
-    subparsers.add_parser("build")
-    subparsers.add_parser("validate")
-    subparsers.add_parser("list")
-    subparsers.add_parser("doctor")
+    add_home_flag(subparsers.add_parser("build"))
+    add_home_flag(subparsers.add_parser("validate"))
+    add_home_flag(subparsers.add_parser("list"))
+    add_home_flag(subparsers.add_parser("doctor"))
 
     install_parser = subparsers.add_parser("install")
-    install_parser.add_argument("target", choices=["codex", "opencode", "claude", "all"])
+    add_home_flag(install_parser)
+    add_repo_flag(install_parser)
+    install_parser.add_argument("target", choices=["codex", "copilot", "opencode", "claude", "all"])
     install_parser.add_argument("--dry-run", action="store_true")
 
-    subparsers.add_parser("version")
+    add_home_flag(subparsers.add_parser("version"))
     return parser
 
 
@@ -58,12 +66,19 @@ def main(argv: list[str] | None = None) -> int:
     if args.command == "doctor":
         targets = default_install_targets(home)
         print(f"codex_skills={targets.codex_skills}")
+        if getattr(args, "repo", None) is not None:
+            print(f"copilot_prompts={args.repo / '.github' / 'prompts'}")
+        else:
+            print("copilot_prompts=<repo>/.github/prompts")
         print(f"opencode_commands={targets.opencode_commands}")
         print(f"opencode_skills={targets.opencode_skills}")
         print(f"claude_commands={targets.claude_commands}")
         return 0
     if args.command == "install":
-        actions = install(root, args.target, home=home, dry_run=args.dry_run)
+        if args.target == "copilot" and args.repo is None:
+            print("copilot install requires --repo", file=sys.stderr)
+            return 2
+        actions = install(root, args.target, home=home, dry_run=args.dry_run, repo=args.repo)
         for action in actions:
             print(f"{action.source} -> {action.destination}")
         return 0

@@ -3,5 +3,5 @@
   "title": "Harness Engineering",
   "description": "Orchestrate RPI, intentional compaction, and context resets across the workflow suite.",
   "command_description": "Coordinate research, planning, compaction, and workflow handoffs.",
-  "prompt": "Use the workflow suite intentionally: discover on-demand truth, compact state into durable markdown artifacts before context degrades, route to grill-me, write-prd, slice-planner, ralph-loop, or ubiquitous-language as needed, and preserve shared artifacts under docs/ai/."
+  "prompt": "Use the workflow suite intentionally: discover on-demand truth, compact state into durable markdown artifacts before context degrades, route to grill-me, research, write-prd, slice-planner, ralph-loop, ubiquitous-language, improve-architecture, and the reviewer workflows as needed, and preserve shared artifacts under docs/ai/. Only begin implementation after the PRD is approved by the user."
 }

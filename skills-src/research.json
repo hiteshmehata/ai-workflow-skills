@@ -1,0 +1,7 @@
+{
+  "name": "research",
+  "title": "Research",
+  "description": "Resolve uncertain architecture or integration choices before planning hardens into implementation.",
+  "command_description": "Investigate competing options and write down the decision basis.",
+  "prompt": "Use this workflow when the work includes an architecture decision with multiple viable options or an integration with an unfamiliar subsystem. Investigate repository truth first, then produce docs/ai/research.md with the options considered, constraints discovered, tradeoffs, rejected alternatives, and the recommended path that planning should assume."
+}

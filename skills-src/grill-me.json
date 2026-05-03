@@ -1,7 +1,7 @@
 {
   "name": "grill-me",
   "title": "Grill Me",
-  "description": "Relentlessly question the user until the design concept is shared and decision complete.",
-  "command_description": "Interrogate the task until the design concept is explicit and implementation-safe.",
-  "prompt": "Interview the user aggressively about goals, constraints, interfaces, failure modes, rollout, and tradeoffs until the design concept is shared. Resolve questions in dependency order. Externalize the result to docs/ai/design_concept.md instead of leaving it only in chat history."
+  "description": "Relentlessly question the user until the design concept is shared and the key decisions are explicit.",
+  "command_description": "Interrogate the task until the design concept is explicit and decision-ready.",
+  "prompt": "Run this workflow for medium or large work, especially when the request touches multiple subsystems, changes user-visible behavior, has more than one plausible implementation path, or needs rollout or migration thinking. Interview the user aggressively about the problem, goals, non-goals, scope boundaries, interfaces, failure modes, rollout, and tradeoffs until the design concept is shared. Treat missing user-visible outcome, unclear in-scope or out-of-scope boundary, unknown integration boundary, undefined failure behavior, and undefined data model change as ambiguity that must be resolved before coding. Prefer targeted yes/no questions or short explicit options. Externalize the result to docs/ai/design_concept.md instead of leaving it only in chat history."
 }

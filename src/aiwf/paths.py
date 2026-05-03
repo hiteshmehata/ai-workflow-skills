@@ -18,6 +18,7 @@ class ProjectLayout:
     dist: Path
     agent_skills: Path
     codex_skills: Path
+    copilot_prompts: Path
     opencode_skills: Path
     opencode_commands: Path
     claude_commands: Path
@@ -40,6 +41,7 @@ def project_layout(root: Path) -> ProjectLayout:
         dist=dist,
         agent_skills=dist / "agent-skills",
         codex_skills=dist / "codex" / "skills",
+        copilot_prompts=dist / "copilot" / "prompts",
         opencode_skills=dist / "opencode" / "skills",
         opencode_commands=dist / "opencode" / "commands",
         claude_commands=dist / "claude" / "commands",

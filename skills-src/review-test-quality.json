@@ -1,0 +1,7 @@
+{
+  "name": "review-test-quality",
+  "title": "Review Test Quality",
+  "description": "Review a completed slice for test quality, signal, and coverage of intended behavior.",
+  "command_description": "Inspect the slice for weak tests and missing feedback loops.",
+  "prompt": "Run this reviewer after an implementation slice is complete. Inspect the tests and validation strategy for missing coverage, brittle assertions, weak failure signal, overmocking, missing regression protection, and gaps between the behavior statement and what is actually verified. Report concrete findings, residual risk, and any required follow-up before the slice is considered ready."
+}

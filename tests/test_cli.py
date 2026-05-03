@@ -14,4 +14,5 @@ def test_doctor_command(capsys, tmp_path) -> None:
     assert main(["doctor", "--home", str(tmp_path)]) == 0
     output = capsys.readouterr().out
     assert ".codex/skills" in output
+    assert "copilot_prompts=<repo>/.github/prompts" in output
     assert ".claude/commands" in output

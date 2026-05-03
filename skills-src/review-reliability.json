@@ -1,0 +1,7 @@
+{
+  "name": "review-reliability",
+  "title": "Review Reliability",
+  "description": "Review a completed slice for robustness, failure handling, and operational safety.",
+  "command_description": "Inspect the slice for reliability regressions and brittle behavior.",
+  "prompt": "Run this reviewer after an implementation slice is complete. Inspect the changed behavior for failure handling gaps, retry and timeout issues, state corruption risk, race conditions, weak observability, brittle assumptions, and rollback concerns. Report concrete findings, residual risk, and any required follow-up before the slice is considered ready."
+}

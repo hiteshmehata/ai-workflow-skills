@@ -1,0 +1,7 @@
+{
+  "name": "review-ux-consistency",
+  "title": "Review UX Consistency",
+  "description": "Review a completed slice for user-facing consistency with the intended experience.",
+  "command_description": "Inspect the slice for UX and interaction inconsistencies.",
+  "prompt": "Run this reviewer after an implementation slice is complete. Inspect user-visible behavior, copy, interaction states, edge cases, and visual or workflow consistency against the PRD and the existing product language. Report concrete findings, residual risk, and any required follow-up before the slice is considered ready."
+}

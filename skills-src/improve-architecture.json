@@ -1,0 +1,7 @@
+{
+  "name": "improve-architecture",
+  "title": "Improve Architecture",
+  "description": "Reshape refactors toward deep modules with simple interfaces that agents can change safely.",
+  "command_description": "Plan or execute a refactor that reduces coupling and clarifies module seams.",
+  "prompt": "Use this workflow during refactors when the current structure makes safe slicing or testing difficult. Identify shallow modules, tangled dependencies, and unstable seams, then propose or implement changes that concentrate complexity behind simpler interfaces. Keep the focus on refactor scope, preserve behavior unless the PRD says otherwise, and reflect architectural decisions in docs/ai/design_concept.md, docs/ai/prd.md, or docs/ai/backlog.md as needed."
+}

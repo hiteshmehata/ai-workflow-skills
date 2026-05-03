@@ -16,6 +16,7 @@ def test_build_generates_expected_outputs() -> None:
 
     for workflow in catalog.workflows:
         assert (layout.codex_skills / workflow.name / "SKILL.md").exists()
+        assert (layout.copilot_prompts / f"{workflow.name}.prompt.md").exists()
         assert (layout.opencode_skills / workflow.name / "SKILL.md").exists()
         assert (layout.opencode_commands / f"{workflow.name}.md").exists()
         assert (layout.claude_commands / f"{workflow.name}.md").exists()
